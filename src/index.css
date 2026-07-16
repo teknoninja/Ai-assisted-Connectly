@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
+
+.container {
+  width: 75vw;
+  height: 90vh;
+  background-color: rgba(17, 25, 40, 0.75);
+  backdrop-filter: blur(19px) saturate(180%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  display: flex;
+  /* overflow: hidden; */
+}
+
+/* --- Animated Background Styles --- */
+.slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow li span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: imageAnimation 24s linear infinite 0s;
+}
+
+.slideshow li:nth-child(1) span {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/summer-slide.jpg);
+}
+.slideshow li:nth-child(2) span {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/fall-slide.jpg);
+  animation-delay: 6s;
+}
+.slideshow li:nth-child(3) span {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/winter-slide.jpg);
+  animation-delay: 12s;
+}
+.slideshow li:nth-child(4) span {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/203277/spring-slide.jpg);
+  animation-delay: 18s;
+}
+.slideshow li:nth-child(5) span {
+  background: url("../public/images/anime2.jpg") center / cover no-repeat;
+  animation-delay: 24s;
+}
+.slideshow li:nth-child(6) span {
+  background: url("../public/images/anime3.jpg") center / cover no-repeat;
+  animation-delay: 30s;
+}
+.slideshow li:nth-child(7) span {
+  background: url("../public/images/anime4.jpg") center / cover no-repeat;
+  animation-delay: 36s;
+}
+.slideshow li:nth-child(8) span {
+  background: url("../public/images/anime5.jpg") center / cover no-repeat;
+  animation-delay: 42s;
+}
+.slideshow li:nth-child(9) span {
+  background: url("../public/images/anime6.webp") center / cover no-repeat;
+  animation-delay: 48s;
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  12.5% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  25% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+  }
+
+  .list {
+    flex: 1;
+  }
+  .chat, .detail {
+    display: none;
+  }
+
+  .container.chat-open .list {
+    display: none;
+  }
+  .container.chat-open .chat,
+  .container.chat-open .detail {
+    display: flex;
+    flex: 1;
+  }
+
+  .chat .top .back-button,
+  .detail .user .back-button {
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.chat .top .back-button,
+.detail .user .back-button {
+    display: none;
+}
